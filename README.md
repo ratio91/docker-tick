@@ -4,9 +4,9 @@ docker tick-stack (telegraf, influxdb, chronograf, [kapacitor]) - ideal for a ra
 
 **prerequisites**
 
-install hypriot on your raspberry pi
+make sure docker runs on your Raspberry Pi
 
-`http://blog.hypriot.com/post/releasing-HypriotOS-1-8/`
+(For new raspberry Pi flash SD card and install hypriot on your raspberry pi first: `http://blog.hypriot.com/post/releasing-HypriotOS-1-8/`)
 
 
 **installation**
@@ -18,6 +18,6 @@ install hypriot on your raspberry pi
 
 **use**
 
-you can access chronograf under http://<<yourIP>>:8888
+you can access chronograf under http://**DeviceIP**:8888
   
-  enjoy.
+enjoy.
