@@ -1,4 +1,5 @@
-# TIG stack on Raspberry Pi (hypriot)
+# TICK stack on Raspberry Pi (hypriot)
+# put this file in /home/pirate/tick-docker/
 
 version: "3.1"
   
@@ -14,7 +15,7 @@ services:
   image: hypriot/rpi-influxdb:latest
   volumes:
   - influxdb-data:/var/lib/influxdb
-  - /home/pirate/tig-docker/influxdb/:/etc/influxdb/
+  - /home/pirate/tick-docker/influxdb/:/etc/influxdb/
   ports:
   - "8086:8086"
   restart: always
@@ -24,7 +25,7 @@ services:
   container_name: telegraf
   image: arm32v7/telegraf:latest
   volumes: 
-  - /home/pirate/tig-docker/telegraf/:/etc/telegraf/
+  - /home/pirate/tick-docker/telegraf/:/etc/telegraf/
   - /run/docker.sock:/var/run/docker.sock
   - /proc:/host/proc:ro
   environment:
@@ -38,6 +39,6 @@ services:
   ports:
   - "8888:8888"
   volumes:
-  - /home/pirate/tig-docker/chronograf:/var/lib/chronograf  
+  - /home/pirate/tick-docker/chronograf:/var/lib/chronograf  
   restart: always
   network_mode: "host"
