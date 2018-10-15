@@ -1,2 +1,2 @@
-# docker-tick
-docker tick-stack (telegraf, influxdb, chronograf, kapacitor) - ideal for a raspberry Pi
+# docker-tic(k)
+docker tick-stack (telegraf, influxdb, chronograf, [kapacitor]) - ideal for a raspberry Pi based on hypriot
