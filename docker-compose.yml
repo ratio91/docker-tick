@@ -1,0 +1,43 @@
+# TIG stack on Raspberry Pi (hypriot)
+
+version: "3.1"
+  
+volumes:
+ grafana-data:
+  driver: local
+ influxdb-data:
+  driver: local
+  
+services:
+ influxdb:
+  container_name: influxdb
+  image: hypriot/rpi-influxdb:latest
+  volumes:
+  - influxdb-data:/var/lib/influxdb
+  - /home/pirate/tig-docker/influxdb/:/etc/influxdb/
+  ports:
+  - "8086:8086"
+  restart: always
+  network_mode: "host"
+
+ telegraf:
+  container_name: telegraf
+  image: arm32v7/telegraf:latest
+  volumes: 
+  - /home/pirate/tig-docker/telegraf/:/etc/telegraf/
+  - /run/docker.sock:/var/run/docker.sock
+  - /proc:/host/proc:ro
+  environment:
+  - HOST_PROC=/host/proc
+  restart: always
+  network_mode: "host"
+
+ chronograf:
+  container_name: chronograf
+  image: chronograf
+  ports:
+  - "8888:8888"
+  volumes:
+  - /home/pirate/tig-docker/chronograf:/var/lib/chronograf  
+  restart: always
+  network_mode: "host"
